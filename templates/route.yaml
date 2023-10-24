@@ -5,12 +5,10 @@ metadata:
     description: Route for application's https service.
   labels:
     application: {{ .Values.app.name }}
-    rhsso: 7.6.1.GA
   name: {{ .Values.app.name }}
-  annotations:
-    cert-utils-operator.redhat-cop.io/certs-from-secret: sefazpe-wildcard
+  namespace: {{ $.Values.namespace }}
 spec:
-  host: sso.sefaz.pe.gov.br
+  host: rest-quarkus-price-fruits.apps.middleware.rhbr-lab.com
   path: /
   tls:
     termination: reencrypt
