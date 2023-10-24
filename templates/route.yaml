@@ -16,3 +16,5 @@ spec:
     name: {{ .Values.app.name }}
     kind: Service
     weight: 100
+  port:
+    targetPort: {{ .Values.service.name }}
