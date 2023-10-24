@@ -8,10 +8,10 @@ metadata:
   name: {{ .Values.app.name }}
   namespace: {{ $.Values.namespace }}
 spec:
-  host: rest-quarkus-price-fruits.apps.middleware.rhbr-lab.com
+  host: {{ .Values.route.host }}
   path: /
   tls:
-    termination: reencrypt
+    termination: {{ .Values.route.termination }}
   to:
     name: {{ .Values.app.name }}
     kind: Service

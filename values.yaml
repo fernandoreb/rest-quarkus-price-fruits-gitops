@@ -8,9 +8,6 @@ app:
   istio: "'false'"  
   persistentVolumeClaim:
     enabled: false
-  vpa:
-    enabled: false
-    name: rest-quarkus-price-fruits-vpa
 
 ingressgateway:
     enabled: false
@@ -96,6 +93,10 @@ service:
   name: http
   port: 8080
   targetPort: 8080
+
+route:
+  host: rest-quarkus-price-fruits.apps.middleware.rhbr-lab.com
+  termination: edge
 
 #readinessProbe:
 #  httpGet:
