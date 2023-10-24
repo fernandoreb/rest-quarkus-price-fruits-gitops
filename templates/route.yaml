@@ -1,0 +1,20 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    description: Route for application's https service.
+  labels:
+    application: {{ .Values.app.name }}
+    rhsso: 7.6.1.GA
+  name: {{ .Values.app.name }}
+  annotations:
+    cert-utils-operator.redhat-cop.io/certs-from-secret: sefazpe-wildcard
+spec:
+  host: sso.sefaz.pe.gov.br
+  path: /
+  tls:
+    termination: reencrypt
+  to:
+    name: {{ .Values.app.name }}
+    kind: Service
+    weight: 100
