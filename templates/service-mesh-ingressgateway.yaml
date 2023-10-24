@@ -1,0 +1,20 @@
+{{- if .Values.ingressgateway.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: {{ .Values.ingressgateway.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+{{ include "argocd.defaultLabels" . | indent 4 }}
+#    app: {{ .Values.app.name }}
+spec:
+  selector:
+    istio: {{ .Values.ingressgateway.selector }}
+  servers:
+  - hosts:
+    - {{ .Values.ingressgateway.host }}
+    port:
+      number: {{ .Values.ingressgateway.port.number }}
+      name: {{ .Values.ingressgateway.port.name }}
+      protocol: {{ .Values.ingressgateway.port.protocol }}
+{{- end }}

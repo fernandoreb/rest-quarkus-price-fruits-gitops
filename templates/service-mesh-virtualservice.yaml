@@ -1,0 +1,21 @@
+{{- if .Values.virtualservice.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Values.virtualservice.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+{{ include "argocd.defaultLabels" . | indent 4 }}
+#    app: {{ .Values.app.name }}
+spec:
+  hosts:
+  - '*'
+  gateways:
+  - {{ .Values.virtualservice.gateway }}
+  http:
+  - route:
+    - destination:
+        host: {{ .Values.virtualservice.destination.host }}
+        port:
+          number: {{ .Values.virtualservice.destination.number }}
+{{- end }}
