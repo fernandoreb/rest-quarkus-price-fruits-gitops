@@ -55,7 +55,7 @@ configmap:
 replicaCount: 1
 
 image:
-  name: image-registry.openshift-image-registry.svc:5000/apps/rest-quarkus-price-fruits@sha256:c8cba1bf845cca497c5b11352f9c6398f41cb3d84db25f295cf31084f2cae62d
+  name: image-registry.openshift-image-registry.svc:5000/apps/rest-quarkus-price-fruits@sha256:df9e4eef547c166a988ed6a45e6fa383dea04501c7360d915dd234336900cda2
   pullPolicy: Always
 
 imagePullSecrets: []
