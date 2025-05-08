@@ -7,7 +7,9 @@ metadata:
 {{ include "argocd.defaultLabels" . | indent 4 }}
     app: {{ .Values.app.name }}
 spec:
+  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
+  {{- end }}
   selector:
     matchLabels:
       deploymentconfig: {{ $.Values.app.deploymentConfigMatch }}
